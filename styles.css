@@ -16,14 +16,17 @@
 
 .attribution {
      font-size: 11px;
-      text-align: center; 
+     color: white;
+      text-align: center;
+       
 }
 
 
 .attribution a { 
-    color: hsl(228, 45%, 44%); 
+    color: hsl(7, 45%, 44%); 
 
 }
+
 
 
 
@@ -73,6 +76,21 @@
     width:100px;
 }
 
+.rules-button{
+    background-color:transparent;
+    color: white;
+    font-family: 'Barlow Semi Condensed';
+    font-size: 16px;
+    padding: 8px 28px;
+    border: 1px solid #FFFFFF;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+line-height: 19px;
+text-align: center;
+letter-spacing: 2.5px;
+}
+
 /* @media only screen and (max-width: 400px) {
     .scissors-placement{
         position: absolute;
@@ -95,6 +113,8 @@
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 
+
+
     
 
     .example {background: green;}
@@ -107,6 +127,7 @@
     .triangle-placement{
         margin: 0px auto;
         margin-top: 100px;
+        height: 250px;
         width: 60%;
     }
 
@@ -114,10 +135,31 @@
         position: relative;
     }
 
+    .attribution {
+        font-size: 11px;
+        color: white;
+         text-align: center;
+          
+   }
+
+    .rules-attribution-container{
+        margin-top: 300px;
+
+        
+    }
+
+
+    .rules-button{
+        margin-top: 120px;
+        left: 50%;
+  margin-left: -50px; /* = -width / 2    */
+        position:fixed;
+ 
+    }
     
 
     
-    }
+    
 
     .scissors-placement{
         position: absolute;
@@ -138,8 +180,11 @@
     .rock-placement{     
     
     position: absolute;
-    top: 50%;
-    left: 35%;
+    bottom: 0;
+    left: 50%;
+    margin-left: -60px;
+    
+   
        
     }
 
@@ -200,9 +245,7 @@ border-radius: 5px;
 
     }
     
-
 }
-
 /* Small devices (portrait tablets and large phones, 600px and up) */
 
 
