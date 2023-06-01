@@ -1,6 +1,10 @@
 
   let $rockObject = $('.rock-placement');
 
+  let score = 0 ;
+
+  let $scoreText =$('#score');
+
   let $paperObject = $('.paper-placement');
 
   let $scissorObject = $('.scissors-placement');
@@ -12,6 +16,30 @@
   let imageUrls = ['./images/icon-rock.svg','./images/icon-paper.svg','./images/icon-scissors.svg']
 
 $(document).ready(()=>{
+  score = parseInt(localStorage.getItem('score')) || 0;
+      $scoreText.text(score);
+
+//   $(window).on('beforeunload', function(){
+//     score = 0
+
+//       localStorage.setItem('score', score);
+
+    
+// });
+
+
+  $(window).on('load', function(){
+
+      score = parseInt(localStorage.getItem('score')) || 0;
+      $scoreText.text(score);
+
+
+});
+
+
+
+
+
 
 
     $('.rules-button').on('click',()=>{
@@ -41,8 +69,22 @@ $(document).ready(()=>{
     // functionality will be checked here
 
     toggleScissorsObject();
-    
 
+
+    setTimeout(function() {
+      let houseChoice = getHouseChoice();
+
+      let winStatus = determineWinner('paper',houseChoice);
+
+      setTimeout(
+function(){
+    $('.win-status').delay(2000).text(winStatus);
+      $('.playagain-status').delay(2000).css('visibility', 'visible');
+      
+},800
+      )
+    
+     }, 1500);
 
 
     })
@@ -67,10 +109,11 @@ $('.rock-object-image').attr("src",imageUrls[0])
 
             toggleScissorsObject();
 
-            setTimeout(
-                checkAnswer(),
-                5000);
-            
+
+            setTimeout(function() {
+              getHouseChoice()
+             }, 1500);
+
     })
 
 
@@ -94,6 +137,9 @@ $('.rock-object-image').attr("src",imageUrls[2])
             $('.scissors-container').css('visibility', 'hidden');
 
             toggleScissorsObject();
+            setTimeout(function() {
+
+             }, 1500);
 
     })
 
@@ -113,6 +159,8 @@ const toggleScissorsObject = () => {
 
     $('.scissors').css('border-color','transparent' );
     $('.scissors').css('background','rgba(0, 0, 0, 0.1)' );
+
+    $('.scissor-object-image').attr("src",imageUrls[2])
     $('.scissor-object-image').hide();
 }
 
@@ -122,42 +170,64 @@ const toggleScissorsObject = () => {
     let choice = Math.floor(Math.random()*3);
     switch(choice){
       case 0:
+        $('.scissors').css('border-color','#DB2E4D' );
+        $('.scissors').css('background','#DADADA' );
+        $('.scissor-object-image').attr("src",imageUrls[0])
+        $('.scissor-object-image').slideDown('slow');
       return 'rock';
-      break;
+     
       case 1:
+        $('.scissors').css('border-color','#4664F4' );
+        $('.scissors').css('background','#DADADA' );
+        $('.scissor-object-image').attr("src",imageUrls[1])
+        $('.scissor-object-image').slideDown('slow');
       return 'scissors';
-      break;
+      
       case 2:
+        $('.scissors').css('border-color','#EB9F0E' );
+        $('.scissors').css('background','#DADADA' );
+        $('.scissor-object-image').attr("src",imageUrls[2]);
+        $('.scissor-object-image').slideDown('slow');
       return 'paper';
-      break;
+      
     }
   }
 
   const determineWinner = (userChoice,computerChoice) => {
     if(userChoice === computerChoice){
-      return 'Game was a tie'
+      return 'YOU LOSE'
     }
    
     if(userChoice === 'rock'){
       if(computerChoice === 'paper'){
-        return 'computer Won'
+        return 'YOU LOSE'
       }else{
-        return 'user Won'
+        score = localStorage.getItem('score') + 1;
+        localStorage.setItem('score', score);
+        $scoreText.text(score);
+        return 'YOU WON'
       }
     }
     if(userChoice === 'paper'){
       if(computerChoice === 'scissors'){
-        return 'Computer Won'
+        return 'YOU LOSE'
       }else{
-        return 'user Won'
+        score = parseInt(localStorage.getItem('score'))+ 1;
+        localStorage.setItem('score', score);
+        $scoreText.text(score);
+
+        return 'YOU WON'
       }
     }
   
     if(userChoice === 'scissors'){
       if(computerChoice === 'rock'){
-        return 'Computer Won'
+        return 'YOU LOSE'
       }else {
-        return 'user Won'
+        score = parseInt(localStorage.getItem('score'))+ 1;
+        localStorage.setItem('score', score);
+        $scoreText.text(score);
+        return 'YOU WON'
       }
     }
   
