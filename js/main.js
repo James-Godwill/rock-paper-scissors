@@ -9,6 +9,8 @@
 
   let $scissorObject = $('.scissors-placement');
 
+  let $playAgain = $('.playagain-button');
+
   let $triangleObject = $('.triangle-placement');
 
   let $selectedText = $('.selected-text');
@@ -54,135 +56,52 @@ $(document).ready(()=>{
         $('#myModal').hide();
     })
 
+
+
   
 
     //Paper Onclick
 
-    $paperObject.on('click',() => {
-      console.log('Hello')
-
-        $rockObject.css(
-            {
-                            'visibility':'hidden'
-
-            }
-            
-            );
-        
-        toggleTextAndTriangle();
-
-    // functionality will be checked here
-
-    toggleScissorsObject();
-
-
-    setTimeout(function() {
-      let houseChoice = getHouseChoice();
-
-      let winStatus = determineWinner('paper',houseChoice);
-
-      setTimeout(
-function(){
-    $('.win-status').text(winStatus);
-      $('.playagain-status').css('visibility', 'visible');
-      
-},600
-      )
-    
-     }, 1500);
-
-
-    })
-
-
-
-
+    $paperObject.on('click',onPaperClicked)
 
     //rock on click
    
-    $rockObject.on('click',() => {
-      console.log('Hello')
-
-        $rockObject.css(
-            {
-                'visibility':'hidden'
-
-}
-            
-            );
-        toggleTextAndTriangle();
-$('.paper-object-image').attr("src",imageUrls[0])
-            $('.paper').css('border-color','#DB2E4D' );
-            $('.scissors-container').css('visibility', 'hidden');
-
-            toggleScissorsObject();
-
-
-            setTimeout(function() {
-              let houseChoice = getHouseChoice();
-        
-              let winStatus = determineWinner('rock',houseChoice);
-        
-              setTimeout(
-        function(){
-            $('.win-status').text(winStatus);
-              $('.playagain-status').css('visibility', 'visible');
-              
-        },600
-              )
-            
-             }, 1500);
-
-    })
-
-
-
-
-
+    $rockObject.on('click',onRockClicked)
 
     //Sciccors on click
 
-    $scissorObject.on('click',() => {
-      console.log('Hello')
-        $rockObject.css(
-            {
-                'visibility':'hidden'
+    $scissorObject.on('click',onScissorsClicked)
 
-}
-            
-            );
-        toggleTextAndTriangle();
-$('.paper-object-image').attr("src",imageUrls[2])
-            $('.paper').css('border-color','#EB9F0E' );
-            $('.scissors-container').css('visibility', 'hidden');
 
-            toggleScissorsObject();
-            setTimeout(function() {
-              let houseChoice = getHouseChoice();
-        
-              let winStatus = determineWinner('scissors',houseChoice);
-        
-              setTimeout(
-        function(){
-            $('.win-status').text(winStatus);
-              $('.playagain-status').css('visibility', 'visible');
-              
-        },600
-              )
-            
-             }, 1500);
-
+    $playAgain.on('click',()=>{
+      playAgain()
     })
-
-
 
 
 
 })
 
+
+
 const toggleTextAndTriangle = () => {
     $triangleObject.css('visibility', 'hidden');
-    $selectedText.show()
+    $selectedText.show();
+
+
+}
+
+const playAgain = () => {
+  toggleButtonsOn();
+  $('.playagain-status').css('visibility', 'hidden');
+  $rockObject.css('visibility','visible');
+  $triangleObject.css('visibility','visible');
+  $selectedText.hide();
+  $('.paper').css('border-color','#4664F4' );
+  $('.paper-object-image').attr("src",imageUrls[1]);
+  $('.scissors').css('border-color','#EB9F0E' );
+  $('.scissors').css('background','#DADADA' );
+  $('.scissor-object-image').attr("src",imageUrls[2]);
+  $('.scissor-object-image').show();
 
 
 }
@@ -192,7 +111,7 @@ const toggleScissorsObject = () => {
     $('.scissors').css('border-color','transparent' );
     $('.scissors').css('background','rgba(0, 0, 0, 0.1)' );
 
-    $('.scissor-object-image').attr("src",imageUrls[2])
+    $('.scissor-object-image').attr("src",imageUrls[2]);
     $('.scissor-object-image').hide();
 }
 
@@ -224,6 +143,157 @@ const toggleScissorsObject = () => {
       
     }
   }
+
+
+  const toggleButtonsOff = () => {
+    $paperObject.off('click');
+    $scissorObject.off('click');
+    $rockObject.off('click');
+  }
+
+  const toggleButtonsOn = () => {
+    $paperObject.on('click',onPaperClicked);
+    $scissorObject.on('click',onScissorsClicked);
+    $rockObject.on('click',onRockClicked);
+  }
+
+
+
+
+
+
+
+
+
+  const onPaperClicked = () => {
+    $rockObject.css(
+      {
+                      'visibility':'hidden'
+
+      }
+      
+      );
+  
+  toggleTextAndTriangle();
+
+// functionality will be checked here
+
+toggleScissorsObject();
+
+
+setTimeout(function() {
+let houseChoice = getHouseChoice();
+
+let winStatus = determineWinner('paper',houseChoice);
+
+setTimeout(
+function(){
+$('.win-status').text(winStatus);
+$('.playagain-status').css('visibility', 'visible');
+
+},600
+)
+
+}, 1500);
+
+toggleButtonsOff()
+
+
+  }
+
+
+
+
+
+  //Function after scissors is clicked 
+
+  const onScissorsClicked = () => {
+    $rockObject.css(
+      {
+          'visibility':'hidden'
+
+}
+      
+      );
+  toggleTextAndTriangle();
+$('.paper-object-image').attr("src",imageUrls[2])
+      $('.paper').css('border-color','#EB9F0E' );
+      $('.scissors-container').css('visibility', 'hidden');
+
+      toggleScissorsObject();
+      setTimeout(function() {
+        let houseChoice = getHouseChoice();
+  
+        let winStatus = determineWinner('scissors',houseChoice);
+  
+        setTimeout(
+  function(){
+      $('.win-status').text(winStatus);
+        $('.playagain-status').css('visibility', 'visible');
+        
+  },600
+        )
+      
+       }, 1500);
+
+       toggleButtonsOff()
+  }
+
+
+
+
+
+
+
+  //Function after rock is clicked 
+  const onRockClicked = () => {
+    $rockObject.css(
+      {
+          'visibility':'hidden'
+
+}
+      
+      );
+  toggleTextAndTriangle();
+$('.paper-object-image').attr("src",imageUrls[0])
+      $('.paper').css('border-color','#DB2E4D' );
+      $('.scissors-container').css('visibility', 'hidden');
+
+      toggleScissorsObject();
+
+
+      setTimeout(function() {
+        let houseChoice = getHouseChoice();
+  
+        let winStatus = determineWinner('rock',houseChoice);
+  
+        setTimeout(
+  function(){
+      $('.win-status').text(winStatus);
+        $('.playagain-status').css('visibility', 'visible');
+        
+  },600
+        )
+      
+       }, 1500);
+
+       toggleButtonsOff()
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //Function to determine winner
 
   const determineWinner = (userChoice,computerChoice) => {
     if(userChoice === computerChoice){
