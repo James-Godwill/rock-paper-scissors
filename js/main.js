@@ -20,10 +20,9 @@ $(document).ready(()=>{
       $scoreText.text(score);
 
 //   $(window).on('beforeunload', function(){
-//     score = 0
-
-//       localStorage.setItem('score', score);
-
+//     score = parseInt(localStorage.getItem('score')) || 0;
+//       $scoreText.text(0);
+      
     
 // });
 
