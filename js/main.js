@@ -1,7 +1,7 @@
 
   let $rockObject = $('.rock-placement');
 
-  let score = 0 ;
+  let score  ;
 
   let $scoreText =$('#score');
 
@@ -17,7 +17,9 @@
 
 $(document).ready(()=>{
   score = parseInt(localStorage.getItem('score')) || 0;
-      $scoreText.text(score);
+  localStorage.setItem('score', score);
+
+  $scoreText.text(score);
 
 //   $(window).on('beforeunload', function(){
 //     score = parseInt(localStorage.getItem('score')) || 0;
@@ -52,9 +54,13 @@ $(document).ready(()=>{
         $('#myModal').hide();
     })
 
+  
+
     //Paper Onclick
 
     $paperObject.on('click',() => {
+      console.log('Hello')
+
         $rockObject.css(
             {
                             'visibility':'hidden'
@@ -77,10 +83,10 @@ $(document).ready(()=>{
 
       setTimeout(
 function(){
-    $('.win-status').delay(2000).text(winStatus);
-      $('.playagain-status').delay(2000).css('visibility', 'visible');
+    $('.win-status').text(winStatus);
+      $('.playagain-status').css('visibility', 'visible');
       
-},800
+},600
       )
     
      }, 1500);
@@ -92,8 +98,11 @@ function(){
 
 
 
-    //Paper on click
+    //rock on click
+   
     $rockObject.on('click',() => {
+      console.log('Hello')
+
         $rockObject.css(
             {
                 'visibility':'hidden'
@@ -102,7 +111,7 @@ function(){
             
             );
         toggleTextAndTriangle();
-$('.rock-object-image').attr("src",imageUrls[0])
+$('.paper-object-image').attr("src",imageUrls[0])
             $('.paper').css('border-color','#DB2E4D' );
             $('.scissors-container').css('visibility', 'hidden');
 
@@ -110,7 +119,18 @@ $('.rock-object-image').attr("src",imageUrls[0])
 
 
             setTimeout(function() {
-              getHouseChoice()
+              let houseChoice = getHouseChoice();
+        
+              let winStatus = determineWinner('rock',houseChoice);
+        
+              setTimeout(
+        function(){
+            $('.win-status').text(winStatus);
+              $('.playagain-status').css('visibility', 'visible');
+              
+        },600
+              )
+            
              }, 1500);
 
     })
@@ -123,6 +143,7 @@ $('.rock-object-image').attr("src",imageUrls[0])
     //Sciccors on click
 
     $scissorObject.on('click',() => {
+      console.log('Hello')
         $rockObject.css(
             {
                 'visibility':'hidden'
@@ -131,16 +152,28 @@ $('.rock-object-image').attr("src",imageUrls[0])
             
             );
         toggleTextAndTriangle();
-$('.rock-object-image').attr("src",imageUrls[2])
+$('.paper-object-image').attr("src",imageUrls[2])
             $('.paper').css('border-color','#EB9F0E' );
             $('.scissors-container').css('visibility', 'hidden');
 
             toggleScissorsObject();
             setTimeout(function() {
-
+              let houseChoice = getHouseChoice();
+        
+              let winStatus = determineWinner('scissors',houseChoice);
+        
+              setTimeout(
+        function(){
+            $('.win-status').text(winStatus);
+              $('.playagain-status').css('visibility', 'visible');
+              
+        },600
+              )
+            
              }, 1500);
 
     })
+
 
 
 
@@ -180,14 +213,14 @@ const toggleScissorsObject = () => {
         $('.scissors').css('background','#DADADA' );
         $('.scissor-object-image').attr("src",imageUrls[1])
         $('.scissor-object-image').slideDown('slow');
-      return 'scissors';
+      return 'paper';
       
       case 2:
         $('.scissors').css('border-color','#EB9F0E' );
         $('.scissors').css('background','#DADADA' );
         $('.scissor-object-image').attr("src",imageUrls[2]);
         $('.scissor-object-image').slideDown('slow');
-      return 'paper';
+      return 'scissors';
       
     }
   }
@@ -201,7 +234,7 @@ const toggleScissorsObject = () => {
       if(computerChoice === 'paper'){
         return 'YOU LOSE'
       }else{
-        score = localStorage.getItem('score') + 1;
+        score = parseInt(localStorage.getItem('score')) + 1;
         localStorage.setItem('score', score);
         $scoreText.text(score);
         return 'YOU WON'

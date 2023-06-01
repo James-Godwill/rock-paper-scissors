@@ -41,7 +41,6 @@ body{
     font-family: 'Barlow Semi Condensed';
     font-size: 16px;
     padding: 12px 60px;
-    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.196706);
 border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
@@ -66,6 +65,7 @@ letter-spacing: 2.5px;
     justify-content: center;
     align-items: center; 
     height:100px;
+    z-index: 2;
     border-radius:50%;
     -moz-border-radius:50%;
     -webkit-border-radius:50%;
@@ -269,7 +269,8 @@ text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.196706);
     }
 
     .playagain-status{
-        visibility: hidden;
+        z-index: 1;
+        visibility: visible;
     }
 
   
@@ -320,6 +321,7 @@ text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.196706);
     .rock-placement{     
     
     position: absolute;
+    z-index: 2;
     bottom: 0;
     left: 50%;
     margin-left: -60px;
