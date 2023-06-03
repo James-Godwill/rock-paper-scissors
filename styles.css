@@ -224,9 +224,7 @@ color: #3B4262;
 
     .win-status{
         font-weight: 700;
-        left: 50%;
         margin-block: 0em;
-        margin-left: -55px; /* = -width / 2    */
 font-size: 56px;
 line-height: 67px;
 
@@ -244,14 +242,14 @@ text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.196706);
 
 
     .win-lose-container{
-        
-       margin-top: -80px;
-      
-        left: 50%;
-  margin-left: -50px; /* = -width / 2    */
-  position: relative;
- 
-    }
+    
+        margin-top: -80px;
+        margin-left: auto;
+        text-align: center;
+        width: 100%;
+     display: inline-block;
+     }
+     
     
 
     
@@ -357,7 +355,6 @@ border-radius: 5px;
 
     .playagain-button{
     
-        margin-left: -60px;
     background-color:linear-gradient(0deg, #F3F3F3 0%, #FFFFFF 100%);;
     color: #3B4262;
     margin-top: 16px;
@@ -512,9 +509,7 @@ color: #3B4262;
 
 .win-status{
     font-weight: 700;
-    left: 50%;
     margin-block: 0em;
-    margin-left: -55px; /* = -width / 2    */
 font-size: 56px;
 line-height: 67px;
 
@@ -534,11 +529,10 @@ text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.196706);
 .win-lose-container{
     
    margin-top: -80px;
-  
-    left: 50%;
-margin-left: -50px; /* = -width / 2    */
-position: relative;
-
+   margin-left: auto;
+   text-align: center;
+   width: 100%;
+display: inline-block;
 }
 
 
@@ -645,12 +639,9 @@ border-radius: 5px;
 
 .playagain-button{
 
-    display: inline-block;
 background-color:linear-gradient(0deg, #F3F3F3 0%, #FFFFFF 100%);;
 color: #3B4262;
 margin-top: 16px;
-margin-left: auto;
-margin-right: auto;
 font-family: 'Barlow Semi Condensed';
 font-size: 16px;
 padding: 12px 60px;
@@ -737,7 +728,7 @@ letter-spacing: 2.5px;
 
     :hover.selectable-object{
         /* box-shadow: 0 0 0 5px red, 0 0 0 10px white, 0 0 0 15px red; */
-        box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.05);
+        box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.05);
 
     }
 
