@@ -18,17 +18,9 @@
   let imageUrls = ['./images/icon-rock.svg','./images/icon-paper.svg','./images/icon-scissors.svg']
 
 $(document).ready(()=>{
-  score = parseInt(localStorage.getItem('score')) || 0;
-  localStorage.setItem('score', score);
 
-  $scoreText.text(score);
 
-//   $(window).on('beforeunload', function(){
-//     score = parseInt(localStorage.getItem('score')) || 0;
-//       $scoreText.text(0);
-      
-    
-// });
+  
 
 
   $(window).on('load', function(){
