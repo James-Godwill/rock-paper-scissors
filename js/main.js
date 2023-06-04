@@ -26,6 +26,8 @@ $(document).ready(()=>{
 
 
   
+  score = parseInt(localStorage.getItem('score')) || 0;
+  $scoreText.text(score);
 
 
   $(window).on('load', function(){
@@ -88,6 +90,7 @@ const toggleTextAndTriangle = () => {
 }
 
 const playAgain = () => {
+  removeOuterCircles()
   $('.win-lose-container').css(
     'z-index', 2
   );
@@ -115,7 +118,6 @@ const playAgain = () => {
     }
     )
     $('.win-lose-container').css('z-index','1');
-    removeOuterCircles();
 
   }
 
@@ -266,7 +268,6 @@ $('.paper-object-image').attr("src",imageUrls[2])
        toggleButtonsOff()
 
        if($(window).width() > 767){
-        console.log("Inside consol log");
         adjustChosenObject()
 
         $('.win-lose-container').css('z-index','9');
