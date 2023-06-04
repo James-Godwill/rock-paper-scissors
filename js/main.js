@@ -5,6 +5,11 @@
 
   let $scoreText =$('#score');
 
+  let $paperOuterCircles = $('div.paper.selectable-object');
+
+  let $scissorsOuterCircles = $('div.scissors.selectable-object');
+
+
   let $paperObject = $('.paper-placement');
 
   let $scissorObject = $('.scissors-placement');
@@ -83,6 +88,9 @@ const toggleTextAndTriangle = () => {
 }
 
 const playAgain = () => {
+  $('.win-lose-container').css(
+    'z-index', 2
+  );
   toggleButtonsOn();
   $('.playagain-status').css('visibility', 'hidden');
   $rockObject.css('visibility','visible');
@@ -94,6 +102,22 @@ const playAgain = () => {
   $('.scissors').css('background','#DADADA' );
   $('.scissor-object-image').attr("src",imageUrls[2]);
   $('.scissor-object-image').show();
+
+  if($(window).width() > 767){
+    console.log("Inside consol log");
+    $paperObject.css({
+      'left':'25%',
+      'top':'-40px'
+    });
+    $scissorObject.css({
+      'right':'25%',
+      'top':'-40px'
+    }
+    )
+    $('.win-lose-container').css('z-index','1');
+    removeOuterCircles();
+
+  }
 
 
 }
@@ -165,6 +189,8 @@ const toggleScissorsObject = () => {
       }
       
       );
+
+      
   
   toggleTextAndTriangle();
 
@@ -189,6 +215,15 @@ $('.playagain-status').css('visibility', 'visible');
 }, 1500);
 
 toggleButtonsOff()
+
+if($(window).width() > 767){
+  console.log("Inside consol log");
+  adjustChosenObject()
+
+  $('.win-lose-container').css('z-index','9');
+
+
+}
 
 
   }
@@ -229,6 +264,15 @@ $('.paper-object-image').attr("src",imageUrls[2])
        }, 1500);
 
        toggleButtonsOff()
+
+       if($(window).width() > 767){
+        console.log("Inside consol log");
+        adjustChosenObject()
+
+        $('.win-lose-container').css('z-index','9');
+
+      
+      }
   }
 
 
@@ -246,6 +290,9 @@ $('.paper-object-image').attr("src",imageUrls[2])
 }
       
       );
+
+      $('.win-lose-container').css('z-index','9');
+
   toggleTextAndTriangle();
 $('.paper-object-image').attr("src",imageUrls[0])
       $('.paper').css('border-color','#DB2E4D' );
@@ -270,45 +317,64 @@ $('.paper-object-image').attr("src",imageUrls[0])
        }, 1500);
 
        toggleButtonsOff()
+
+       if($(window).width() > 767){
+      adjustChosenObject()
+      
+      }
   }
 
 
+  const adjustChosenObject = () =>{
+  $paperObject.css({
+          'left':'17%',
+          'top':'-40px'
+        });
+        $scissorObject.css({
+          'right':'17%',
+          'top':'-40px'
+        });
+  }
 
+  const removeOuterCircles = () => {
+    $paperOuterCircles.removeClass('outer-circles');
+    $scissorsOuterCircles.removeClass('outer-circles');
 
-
-
-
-
-
-
-
-
+  }
 
 
   //Function to determine winner
 
   const determineWinner = (userChoice,computerChoice) => {
     if(userChoice === computerChoice){
+      $scissorsOuterCircles.addClass('outer-circles');
       return 'YOU LOSE'
     }
    
     if(userChoice === 'rock'){
       if(computerChoice === 'paper'){
+        $scissorsOuterCircles.addClass('outer-circles');
+
         return 'YOU LOSE'
       }else{
         score = parseInt(localStorage.getItem('score')) + 1;
         localStorage.setItem('score', score);
         $scoreText.text(score);
+        $paperOuterCircles.addClass('outer-circles');
+
         return 'YOU WON'
       }
     }
     if(userChoice === 'paper'){
       if(computerChoice === 'scissors'){
+        $scissorsOuterCircles.addClass('outer-circles');
+
         return 'YOU LOSE'
       }else{
         score = parseInt(localStorage.getItem('score'))+ 1;
         localStorage.setItem('score', score);
         $scoreText.text(score);
+        $paperOuterCircles.addClass('outer-circles');
 
         return 'YOU WON'
       }
@@ -316,11 +382,15 @@ $('.paper-object-image').attr("src",imageUrls[0])
   
     if(userChoice === 'scissors'){
       if(computerChoice === 'rock'){
+        $scissorsOuterCircles.addClass('.outer-circles');
+
         return 'YOU LOSE'
       }else {
         score = parseInt(localStorage.getItem('score'))+ 1;
         localStorage.setItem('score', score);
         $scoreText.text(score);
+        $paperOuterCircles.addClass('outer-circles');
+
         return 'YOU WON'
       }
     }

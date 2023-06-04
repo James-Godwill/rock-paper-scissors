@@ -3,7 +3,7 @@
 :root{
 
     /* background: radial-gradient(#1F3757 100%,#131537 100%); */
- background: radial-gradient(circle at 50% 0%, #1F3757 0%, #131537 100%);
+ background: radial-gradient(circle at 50% 0%, hsl(214, 47%, 23%) 0%, hsl(237, 49%, 15%) 100%);
  font-style: normal;
 
  font-family: 'Barlow Semi Condensed';
@@ -23,12 +23,16 @@ body{
      font-size: 11px;
      color: white;
       text-align: center;
-       
 }
 
 
 .attribution a { 
     color: hsl(7, 45%, 44%); 
+
+}
+
+.outer-circles{
+    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.05), 0 0 0 50px rgba(255, 255, 255, 0.05), 0 0 0 75px rgba(255, 255, 255, 0.05); 
 
 }
 
@@ -49,7 +53,8 @@ body{
     justify-content: center;
     align-items: center; 
     height:100px;
-    z-index: 2;
+    z-index: 4;
+    cursor: pointer;
     border-radius:50%;
     -moz-border-radius:50%;
     -webkit-border-radius:50%;
@@ -422,7 +427,7 @@ text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.196706);
 .modal {
 display: none; /* Hidden by default */
 position: fixed; /* Stay in place */
-z-index: 3; /* Sit on top */
+z-index: 10; /* Sit on top */
 left: 0;
 top: 0;
 width: 100%; /* Full width */
@@ -647,6 +652,7 @@ font-size: 16px;
 padding: 12px 60px;
 border-radius: 8px;
 cursor: pointer;
+position: relative;
 font-weight: 600;
 line-height: 19px;
 text-align: center;
@@ -708,7 +714,7 @@ letter-spacing: 2.5px;
     }
 
     .score-container{
-        width: 23%;
+        width: 20%;
     }
     
 
@@ -717,32 +723,73 @@ letter-spacing: 2.5px;
     }
 
     .triangle-placement{
-        margin-top: 100px;
+        margin-top: 70px;
         height: 250px;
+    }
+
+    .scissors-placement{
+       flex-direction: column-reverse;
+    }
+
+    .paper-placement{
+        flex-direction: column-reverse;
+    }
+
+    .selected-text{
+        margin-bottom: 20px;
     }
 
     :hover.rules-button{
         color: #3B4262;
-        background: linear-gradient(0deg, #F3F3F3 0%, #FFFFFF 100%);;
+        background: linear-gradient(0deg, #F3F3F3 0%, #FFFFFF 100%);
+    }
+
+    .rules-button{
+        float: right;
+        margin-right: 40px;
+        margin-top: 70px;
+
     }
 
     :hover.selectable-object{
         /* box-shadow: 0 0 0 5px red, 0 0 0 10px white, 0 0 0 15px red; */
-        box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.05);
+        box-shadow: 0 0 0 15px rgba(255, 255, 255, 0.05);
 
     }
 
+ 
 
+    .win-lose-container{
+        z-index: 1;
+        position: relative;
+        top: -140px;       
+     }
+
+     .attribution{
+        width: 100%;
+        text-align: center;
+        margin-top: 40px;
+        display: inline-block;
+        
+     }
+
+    
 
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
 
+
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
+   :hover.selectable-object{
+        /* box-shadow: 0 0 0 5px red, 0 0 0 10px white, 0 0 0 15px red; */
+        box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.05);
+
+    }
 
 }
 
