@@ -9,6 +9,10 @@
 
   let $scissorsOuterCircles = $('div.scissors.selectable-object');
 
+  
+
+
+
 
   let $paperObject = $('.paper-placement');
 
@@ -219,7 +223,6 @@ $('.playagain-status').css('visibility', 'visible');
 toggleButtonsOff()
 
 if($(window).width() > 767){
-  console.log("Inside consol log");
   adjustChosenObject()
 
   $('.win-lose-container').css('z-index','9');
@@ -347,6 +350,7 @@ $('.paper-object-image').attr("src",imageUrls[0])
   //Function to determine winner
 
   const determineWinner = (userChoice,computerChoice) => {
+
     if(userChoice === computerChoice){
       $scissorsOuterCircles.addClass('outer-circles');
       return 'YOU LOSE'
@@ -371,19 +375,20 @@ $('.paper-object-image').attr("src",imageUrls[0])
         $scissorsOuterCircles.addClass('outer-circles');
 
         return 'YOU LOSE'
-      }else{
+      }else{     
+           $paperOuterCircles.addClass('outer-circles');
+
         score = parseInt(localStorage.getItem('score'))+ 1;
         localStorage.setItem('score', score);
         $scoreText.text(score);
-        $paperOuterCircles.addClass('outer-circles');
-
+        console.log('Inisde user won')
         return 'YOU WON'
       }
     }
   
     if(userChoice === 'scissors'){
       if(computerChoice === 'rock'){
-        $scissorsOuterCircles.addClass('.outer-circles');
+        $scissorsOuterCircles.addClass('outer-circles');
 
         return 'YOU LOSE'
       }else {
