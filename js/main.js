@@ -1,7 +1,7 @@
 
   let $rockObject = $('.rock-placement');
 
-  let score  ;
+  let score ;
 
   let $scoreText =$('#score');
 
@@ -9,8 +9,6 @@
 
 
   let $scissorsOuterCircles = $('div.scissors.selectable-object');
-
-  
 
 
 
@@ -30,8 +28,10 @@
 $(document).ready(()=>{
 
 
-  
+
   score = parseInt(localStorage.getItem('score')) || 0;
+  localStorage.setItem('score', score);
+
   $scoreText.text(score);
 
 
@@ -42,6 +42,8 @@ $(document).ready(()=>{
 
 
 });
+
+
 
 
 
@@ -542,6 +544,7 @@ $('.paper-object-image').attr("src",imageUrls[0])
       }else{
         score = parseInt(localStorage.getItem('score')) + 1;
         localStorage.setItem('score', score);
+        console.log(score);
         $scoreText.text(score);
         $paperOuterCircles.addClass('outer-circles');
 
@@ -558,7 +561,11 @@ $('.paper-object-image').attr("src",imageUrls[0])
 
         score = parseInt(localStorage.getItem('score'))+ 1;
         localStorage.setItem('score', score);
+                console.log(score);
+
         $scoreText.text(score);
+        
+
         return 'YOU WON'
       }
     }
@@ -571,6 +578,8 @@ $('.paper-object-image').attr("src",imageUrls[0])
       }else {
         score = parseInt(localStorage.getItem('score'))+ 1;
         localStorage.setItem('score', score);
+                console.log(score);
+
         $scoreText.text(score);
         $paperOuterCircles.addClass('outer-circles');
 
