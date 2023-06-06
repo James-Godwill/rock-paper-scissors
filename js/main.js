@@ -7,6 +7,7 @@
 
   let $paperOuterCircles = $('div.paper.selectable-object');
 
+
   let $scissorsOuterCircles = $('div.scissors.selectable-object');
 
   
@@ -110,14 +111,37 @@ const playAgain = () => {
   $('.scissor-object-image').attr("src",imageUrls[2]);
   $('.scissor-object-image').show();
 
-  if($(window).width() > 767){
-    console.log("Inside consol log");
+  if($(window).width() > 767 && $(window).width() < 992){
     $paperObject.css({
       'left':'25%',
       'top':'-40px'
     });
     $scissorObject.css({
       'right':'25%',
+      'top':'-40px'
+    }
+    )
+    $('.win-lose-container').css('z-index','1');
+
+  }else if($(window).width() > 991 && $(window).width() < 1201){
+    $paperObject.css({
+      'left':'33%',
+      'top':'-40px'
+    });
+    $scissorObject.css({
+      'right':'33%',
+      'top':'-40px'
+    }
+    )
+    $('.win-lose-container').css('z-index','1');
+
+  }else if($(window).width() > 1201){
+    $paperObject.css({
+      'left':'34%',
+      'top':'-40px'
+    });
+    $scissorObject.css({
+      'right':'34%',
       'top':'-40px'
     }
     )
@@ -188,6 +212,8 @@ const toggleScissorsObject = () => {
 
 
   const onPaperClicked = () => {
+    $playAgain.css('color','#3B4262')
+
     $rockObject.css(
       {
                       'visibility':'hidden'
@@ -209,6 +235,17 @@ setTimeout(function() {
 let houseChoice = getHouseChoice();
 
 let winStatus = determineWinner('paper',houseChoice);
+if(winStatus === "YOU LOSE"){
+  console.log(winStatus)
+
+  $playAgain.on( "mouseenter", () =>{
+$playAgain.css('color','#DB2E4D')
+  } ).on( "mouseleave", () =>{
+    $playAgain.css('color','#3B4262')
+
+  } );
+
+}
 
 setTimeout(
 function(){
@@ -222,12 +259,44 @@ $('.playagain-status').css('visibility', 'visible');
 
 toggleButtonsOff()
 
-if($(window).width() > 767){
-  adjustChosenObject()
+if($(window).width() > 767 && $(window).width() < 992){
+  setTimeout(
+    function(){
+      adjustChosenObject()
+        
+  }
+,1800
+  )
 
   $('.win-lose-container').css('z-index','9');
 
 
+}else if($(window).width() > 991 && $(window).width() < 1201){
+  setTimeout(
+    function(){
+      adjustChosenObject()
+        
+  }
+,1800
+  )
+  $('.win-lose-container').css('z-index','9');
+
+
+  $('.win-lose-container').css('z-index','9');
+}else if($(window).width() > 1200){
+  setTimeout(
+    function(){
+      adjustChosenObject()
+        
+  }
+,1800
+  )
+  
+
+  $('.win-lose-container').css('z-index','9');
+}else{
+
+  return;
 }
 
 
@@ -240,6 +309,9 @@ if($(window).width() > 767){
   //Function after scissors is clicked 
 
   const onScissorsClicked = () => {
+
+
+    $playAgain.css('color','#3B4262');
     $rockObject.css(
       {
           'visibility':'hidden'
@@ -257,7 +329,14 @@ $('.paper-object-image').attr("src",imageUrls[2])
         let houseChoice = getHouseChoice();
   
         let winStatus = determineWinner('scissors',houseChoice);
-  
+        if(winStatus === "YOU LOSE"){
+          $playAgain.on( "mouseenter", () =>{
+            $playAgain.css('color','#DB2E4D')
+              } ).on( "mouseleave", () =>{
+                $playAgain.css('color','#3B4262')
+            
+              } );
+        }
         setTimeout(
   function(){
       $('.win-status').text(winStatus);
@@ -270,12 +349,44 @@ $('.paper-object-image').attr("src",imageUrls[2])
 
        toggleButtonsOff()
 
-       if($(window).width() > 767){
-        adjustChosenObject()
+       if($(window).width() > 767 && $(window).width() < 992){
+        setTimeout(
+          function(){
+            adjustChosenObject()
+              
+        }
+  ,1800
+        )
 
         $('.win-lose-container').css('z-index','9');
 
       
+      }else if($(window).width() > 991 && $(window).width() < 1201){
+        setTimeout(
+          function(){
+            adjustChosenObject()
+              
+        }
+  ,1800
+        )
+        $('.win-lose-container').css('z-index','9');
+
+
+        $('.win-lose-container').css('z-index','9');
+      }else if($(window).width() > 1200){
+        setTimeout(
+          function(){
+            adjustChosenObject()
+              
+        }
+  ,1800
+        )
+        
+
+        $('.win-lose-container').css('z-index','9');
+      }else{
+
+        return;
       }
   }
 
@@ -287,6 +398,8 @@ $('.paper-object-image').attr("src",imageUrls[2])
 
   //Function after rock is clicked 
   const onRockClicked = () => {
+    $playAgain.css('color','#3B4262')
+
     $rockObject.css(
       {
           'visibility':'hidden'
@@ -309,7 +422,14 @@ $('.paper-object-image').attr("src",imageUrls[0])
         let houseChoice = getHouseChoice();
   
         let winStatus = determineWinner('rock',houseChoice);
-  
+        if(winStatus === "YOU LOSE"){
+          $playAgain.on( "mouseenter", () =>{
+            $playAgain.css('color','#DB2E4D')
+              } ).on( "mouseleave", () =>{
+                $playAgain.css('color','#3B4262')
+            
+              } );
+        }
         setTimeout(
   function(){
       $('.win-status').text(winStatus);
@@ -322,22 +442,80 @@ $('.paper-object-image').attr("src",imageUrls[0])
 
        toggleButtonsOff()
 
-       if($(window).width() > 767){
-      adjustChosenObject()
+       if($(window).width() > 767 && $(window).width() < 992){
+        setTimeout(
+          function(){
+            adjustChosenObject()
+              
+        }
+  ,1800
+        )
+
+        $('.win-lose-container').css('z-index','9');
+
       
+      }else if($(window).width() > 991 && $(window).width() < 1201){
+        setTimeout(
+          function(){
+            adjustChosenObject()
+              
+        }
+  ,1800
+        )
+        $('.win-lose-container').css('z-index','9');
+
+
+        $('.win-lose-container').css('z-index','9');
+      }else if($(window).width() > 1200){
+        setTimeout(
+          function(){
+            adjustChosenObject()
+              
+        }
+  ,1800
+        )
+        
+
+        $('.win-lose-container').css('z-index','9');
+      }else{
+
+        return;
       }
   }
 
 
   const adjustChosenObject = () =>{
-  $paperObject.css({
+
+    if($(window).width() > 991 && $(window).width() < 1201){
+      $paperObject.animate({
+        'left':'25%',
+        'top':'-40px'
+      });
+      $scissorObject.animate({
+        'right':'25%',
+        'top':'-40px'
+      });
+    }else if($(window).width() > 1201){
+      $paperObject.animate({
+        'left':'26%',
+        'top':'-40px'
+      });
+      $scissorObject.animate({
+        'right':'26%',
+        'top':'-40px'
+      });
+    }else{
+       $paperObject.animate({
           'left':'17%',
           'top':'-40px'
         });
-        $scissorObject.css({
+        $scissorObject.animate({
           'right':'17%',
           'top':'-40px'
-        });
+        }); 
+    }
+
+
   }
 
   const removeOuterCircles = () => {
@@ -381,7 +559,6 @@ $('.paper-object-image').attr("src",imageUrls[0])
         score = parseInt(localStorage.getItem('score'))+ 1;
         localStorage.setItem('score', score);
         $scoreText.text(score);
-        console.log('Inisde user won')
         return 'YOU WON'
       }
     }

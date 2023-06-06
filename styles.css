@@ -5,6 +5,7 @@
     /* background: radial-gradient(#1F3757 100%,#131537 100%); */
  background: radial-gradient(circle at 70% 60%, hsl(214, 47%, 23%) 0%, hsl(237, 49%, 15%) 100%);
  font-style: normal;
+ overflow-x: hidden;
 
  font-family: 'Barlow Semi Condensed';
 
@@ -34,7 +35,6 @@ body{
     box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.05), 0 0 0 50px rgba(255, 255, 255, 0.05), 0 0 0 75px rgba(255, 255, 255, 0.05); 
 
 }
-
 
 
 
@@ -85,6 +85,56 @@ text-align: center;
 letter-spacing: 1.5625px;
 }
 
+
+.triangle-placement{
+    margin: 0px auto;
+    margin-top: 70px;
+    height: 250px;
+    width: 60%;
+}
+
+.scissors-placement{
+    position: absolute;
+    top: -40px;
+    right: 10%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.paper-placement{
+    position:absolute;
+    left: 10%;
+    top: -40px;
+    flex-wrap: wrap;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+
+
+
+}
+
+
+.rock-placement{     
+
+position: absolute;
+z-index: 2;
+bottom: 0;
+left: 50%;
+margin-left: -60px;
+
+
+   
+}
+
+
+
 /* @media only screen and (max-width: 400px) {
     .scissors-placement{
         position: absolute;
@@ -108,7 +158,12 @@ letter-spacing: 1.5625px;
 @media only screen and (max-width: 600px) {
 
 
-
+    .selectable-object{
+  
+        height:100px;
+      
+        width:100px;
+    }
     
 
     :root{
@@ -215,6 +270,7 @@ color: #3B4262;
     .attribution {
         font-size: 11px;
         color: white;
+        overflow-y: hidden;
          text-align: center;
          margin-top: 30px;
           
@@ -396,11 +452,9 @@ letter-spacing: 2.5px;
 /* Small devices (portrait tablets and large phones, 600px and up) */
 
 @media only screen and (min-width: 600px) {
-    :root{
-        background: radial-gradient(hsl(214, 47%, 23%) to hsl(237, 49%, 15%));
-        height: 100%;
+ 
 
-}
+
 
 
     .selected-text{
@@ -442,8 +496,7 @@ flex-wrap: wrap;
 flex-direction: column;
 justify-content: space-around;
 align-items: center;
-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.196706);
-border-radius: 8px;
+
 width: 100%;
 height: 100%;
 }
@@ -647,6 +700,7 @@ border-radius: 5px;
 background-color:linear-gradient(0deg, #F3F3F3 0%, #FFFFFF 100%);;
 color: #3B4262;
 margin-top: 16px;
+
 font-family: 'Barlow Semi Condensed';
 font-size: 16px;
 padding: 12px 60px;
@@ -703,7 +757,25 @@ letter-spacing: 2.5px;
 
 
 /* Medium devices (landscape tablets, 768px and up) */
+
+
+
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+
+
 @media only screen and (min-width: 768px) {
+
+
+    
+    .selectable-object{
+  
+        height:100px;
+      
+        width:100px;
+    }
+    
+  
     .object-score-section{
 
   
@@ -769,7 +841,7 @@ letter-spacing: 2.5px;
      .attribution{
         width: 100%;
         text-align: center;
-        margin-top: 40px;
+        overflow-y: hidden;
         display: inline-block;
         
      }
@@ -836,16 +908,112 @@ z-index: 15;
 @media only screen and (min-width: 992px) {
 
 
-}
+    
+    .selectable-object{
+  
+        height:100px;
+      
+        width:100px;
+    }
+    
 
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-   :hover.selectable-object{
-        /* box-shadow: 0 0 0 5px red, 0 0 0 10px white, 0 0 0 15px red; */
-        box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.05);
+    .scissors-placement{
+      
+        right: 33%;
+     
+    }
+    
+    .paper-placement{
+        left: 33%;
+        
+    
+    
+    
+    }
+    
+    
+    .rock-placement{     
+    
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    left: 50%;
+    margin-left: -60px;
+    
+    
+       
+    }
+
+    .attribution{
+        overflow-y: hidden;
 
     }
 
+    .triangle-placement{
+        width: 30%;
+        margin-top: 70px;
+        height: 250px;
+    }
+    
+
 }
+
+@media only screen and (min-width: 1200px) {
+    .selectable-object{
+  
+        height:100px;
+      
+        width:100px;
+    }
+
+   
+  
+    .object-score-section{
+
+  
+        width: 45%;
+    
+    
+    
+    }
+
+    .scissors-placement{
+        right: 34%;
+
+    }
+    .paper-placement{
+        left: 34%;
+
+    }
+
+    .rock-placement{
+        left: 49%;
+
+    }
+    
+
+    .score-container{
+        width: 18%;
+    }
+    
+
+    .score-text{
+        font-size: 12px;
+    }
+
+    .triangle-placement{
+        margin-top: 70px;
+        height: 280px;
+        width: 28%;
+    }
+    .selectable-object{
+  
+        height:120px;
+      
+        width:120px;
+    }
+
+    
+    
 
 }
