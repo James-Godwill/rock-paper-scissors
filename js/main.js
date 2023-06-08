@@ -5,6 +5,10 @@
 
   let $scoreText =$('#score');
 
+
+  let $innerContainer = $('.scissor-toggle')
+
+
   let $paperOuterCircles = $('div.paper.selectable-object');
 
 
@@ -188,9 +192,12 @@ const toggleScissorsObject = () => {
 
         $('.scissor-object-image').attr("src",imageUrls[0])
         $('.scissor-object-image').slideDown('slow');
+        $innerContainer.show()
       return 'rock';
      
       case 1:
+$innerContainer.show();
+
         $('.scissors').css('border-color','#4664F4' );
         $('.scissors').css('background','#DADADA' );
         $outerDarkYellow.css('background-color','#2642bf');
@@ -200,6 +207,7 @@ const toggleScissorsObject = () => {
       return 'paper';
       
       case 2:
+        $($innerContainer).show();
         $('.scissors').css('border-color','#EB9F0E' );
         $('.scissors').css('background','#DADADA' );
         $outerDarkYellow.css('background-color','#c76b18');
@@ -234,7 +242,9 @@ const toggleScissorsObject = () => {
 
   const onPaperClicked = () => {
     $playAgain.css('color','#3B4262');
-    $outerDarkYellow.css('background-color','transparent')
+    $outerDarkYellow.css('background-color','transparent');
+   $innerContainer.hide();
+
 
     $rockObject.css(
       {
@@ -254,6 +264,8 @@ toggleScissorsObject();
 
 
 setTimeout(function() {
+  $innerContainer.show();
+
 let houseChoice = getHouseChoice();
 
 let winStatus = determineWinner('paper',houseChoice);
@@ -331,6 +343,8 @@ if($(window).width() > 767 && $(window).width() < 992){
   //Function after scissors is clicked 
 
   const onScissorsClicked = () => {
+
+    $innerContainer.hide();
 
     $outerDarkYellow.css('background-color','transparent');
     $outerDarkBlue.css('background-color','#c76b18');
@@ -422,6 +436,8 @@ $('.paper-object-image').attr("src",imageUrls[2])
 
   //Function after rock is clicked 
   const onRockClicked = () => {
+    $innerContainer.hide();
+
     $playAgain.css('color','#3B4262')
     $outerDarkYellow.css('background-color','transparent');
     $outerDarkBlue.css('background-color','#9d1736');
