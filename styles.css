@@ -231,6 +231,7 @@ margin-left: -60px;
 } */
 
 
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 
@@ -829,16 +830,40 @@ letter-spacing: 2.5px;
 
 
 
-/* Medium devices (landscape tablets, 768px and up) */
 
 
 
 }
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 
+/* Medium devices (landscape tablets, 768px and up) */
 
 @media only screen and (min-width: 768px) {
 
+
+    #score{
+        font-size: 64px;
+        margin-top: 10px;
+
+
+    }
+
+   
+   .object{
+font-size: 28px;
+line-height: 23px;
+   }
+     .score-text{
+        font-size: 16px;
+    }
+
+    .score-container{
+        height: 90%;
+    }
+
+   .object-score-section{
+    height: 120px;
+   }
 
     
     .selectable-object{
@@ -1059,16 +1084,14 @@ z-index: 15;
         bottom: -25px;
 
     }
-    
 
+  
     .score-container{
         width: 18%;
     }
     
 
-    .score-text{
-        font-size: 12px;
-    }
+   
 
     .triangle-placement{
         margin-top: 70px;
@@ -1111,7 +1134,7 @@ z-index: 15;
     }
 
     .inner-circle2{
-            transform: translateY(6.5px) scale(1.02);
+            transform: translateY(5px) scale(1.02);
 
     }
 
