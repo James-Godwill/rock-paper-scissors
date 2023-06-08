@@ -9,7 +9,10 @@
 
 
   let $scissorsOuterCircles = $('div.scissors.selectable-object');
-
+  
+  let $outerDarkBlue = $('.dark-blue');
+  let $outerDarkRed = $('.dark-red');
+  let $outerDarkYellow = $('.dark-yellow');
 
 
 
@@ -26,6 +29,9 @@
   let imageUrls = ['./images/icon-rock.svg','./images/icon-paper.svg','./images/icon-scissors.svg']
 
 $(document).ready(()=>{
+
+
+ 
 
 
 
@@ -97,6 +103,7 @@ const toggleTextAndTriangle = () => {
 }
 
 const playAgain = () => {
+  restoreDefaultColors()
   removeOuterCircles()
   $('.win-lose-container').css(
     'z-index', 2
@@ -166,11 +173,19 @@ const toggleScissorsObject = () => {
 
 
   const getHouseChoice = () =>{
+    // $outerDarkYellow.css('background-color','#c76b18');
+    // $outerDarkBlue.css('background-color','#2642bf');
+    // $outerDarkRed.css('background-color','#9d1736');
+
+
+
     let choice = Math.floor(Math.random()*3);
     switch(choice){
       case 0:
         $('.scissors').css('border-color','#DB2E4D' );
         $('.scissors').css('background','#DADADA' );
+        $outerDarkYellow.css('background-color','#9d1736');
+
         $('.scissor-object-image').attr("src",imageUrls[0])
         $('.scissor-object-image').slideDown('slow');
       return 'rock';
@@ -178,6 +193,8 @@ const toggleScissorsObject = () => {
       case 1:
         $('.scissors').css('border-color','#4664F4' );
         $('.scissors').css('background','#DADADA' );
+        $outerDarkYellow.css('background-color','#2642bf');
+
         $('.scissor-object-image').attr("src",imageUrls[1])
         $('.scissor-object-image').slideDown('slow');
       return 'paper';
@@ -185,6 +202,8 @@ const toggleScissorsObject = () => {
       case 2:
         $('.scissors').css('border-color','#EB9F0E' );
         $('.scissors').css('background','#DADADA' );
+        $outerDarkYellow.css('background-color','#c76b18');
+
         $('.scissor-object-image').attr("src",imageUrls[2]);
         $('.scissor-object-image').slideDown('slow');
       return 'scissors';
@@ -214,7 +233,8 @@ const toggleScissorsObject = () => {
 
 
   const onPaperClicked = () => {
-    $playAgain.css('color','#3B4262')
+    $playAgain.css('color','#3B4262');
+    $outerDarkYellow.css('background-color','transparent')
 
     $rockObject.css(
       {
@@ -312,6 +332,8 @@ if($(window).width() > 767 && $(window).width() < 992){
 
   const onScissorsClicked = () => {
 
+    $outerDarkYellow.css('background-color','transparent');
+    $outerDarkBlue.css('background-color','#c76b18');
 
     $playAgain.css('color','#3B4262');
     $rockObject.css(
@@ -401,6 +423,8 @@ $('.paper-object-image').attr("src",imageUrls[2])
   //Function after rock is clicked 
   const onRockClicked = () => {
     $playAgain.css('color','#3B4262')
+    $outerDarkYellow.css('background-color','transparent');
+    $outerDarkBlue.css('background-color','#9d1736');
 
     $rockObject.css(
       {
@@ -588,5 +612,12 @@ $('.paper-object-image').attr("src",imageUrls[0])
     }
   
   
+  }
+
+  const restoreDefaultColors =()=>{
+    $outerDarkYellow.css('background-color','#c76b18');
+    $outerDarkBlue.css('background-color','#2642bf');
+    $outerDarkRed.css('background-color','#9d1736');
+
   }
 

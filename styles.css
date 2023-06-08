@@ -1,22 +1,15 @@
 
 
-:root{
 
-    /* background: radial-gradient(#1F3757 100%,#131537 100%); */
- background: radial-gradient(circle at 70% 60%, hsl(214, 47%, 23%) 0%, hsl(237, 49%, 15%) 100%);
- font-style: normal;
- overflow-x: hidden;
-
- font-family: 'Barlow Semi Condensed';
-
-
-  /* /radial-gradient(134.34% 134.34% at 50% 0%, #1F3757 0%, #131537 100%) */
-
-  /* radial-gradient(134.34% 134.34% at 50% 0%, #1F3757 0%, #131537 100%) */
-}
 
 body{
     overflow-x: hidden;
+        background-image: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    font-style: normal;
+    font-family: 'Barlow Semi Condensed', sans-serif;
 }
 
 .attribution {
@@ -46,23 +39,57 @@ body{
 
 }
 
+
+
 .selectable-object{
     background:linear-gradient(0deg, #F3F3F3 0%, #DADADA 98.34%);;
     display: flex;
     justify-content: center;
     align-items: center; 
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
     height:100px;
+    transform: translate(-50%, -50%);
     z-index: 4;
     cursor: pointer;
     border-radius:50%;
+    box-shadow: 0 3px 3px rgb(0 0 0 / 25%);
     -moz-border-radius:50%;
+    transform: translateY(-6px) scale(1.03);
     -webkit-border-radius:50%;
     width:100px;
+}
+.dark-blue{
+    border-radius:50%;
+    -webkit-border-radius:50%;
+
+    -moz-border-radius:50%;
+
+    background-color: #2642bf;
+
+}
+
+.dark-red{
+    border-radius:50%;
+    -webkit-border-radius:50%;
+
+    -moz-border-radius:50%;
+    background-color: #9d1736;
+
+}
+
+.dark-yellow{
+    border-radius:50%;
+    -webkit-border-radius:50%;
+
+    -moz-border-radius:50%;
+    background-color: #c76b18;
+
 }
 
 .paper{
     border:15px solid #4664F4;    
-   
+ 
+
 }
 
 .scissors{
@@ -166,11 +193,7 @@ margin-left: -60px;
     }
     
 
-    :root{
-            background: radial-gradient(hsl(214, 47%, 23%) to hsl(237, 49%, 15%));
-            height: 100%;
-
-    }
+   
 
     
         .selected-text{
@@ -959,13 +982,7 @@ z-index: 15;
 }
 
 @media only screen and (min-width: 1200px) {
-    .selectable-object{
-  
-        height:100px;
-      
-        width:100px;
-    }
-
+   
    
   
     .object-score-section{
@@ -987,7 +1004,9 @@ z-index: 15;
     }
 
     .rock-placement{
-        left: 49%;
+
+        left: 48%;
+        bottom: -25px;
 
     }
     
@@ -1008,9 +1027,24 @@ z-index: 15;
     }
     .selectable-object{
   
-        height:120px;
+        height:140px;
       
-        width:120px;
+        width:140px;
+    }
+
+    .paper{
+        border:18px solid #4664F4;    
+       
+    }
+    
+    .scissors{
+        border:18px solid #EB9F0E; 
+      
+    }
+    
+    .rock{
+        border:18px solid #DB2E4D; 
+    
     }
 
     
