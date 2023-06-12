@@ -55,9 +55,13 @@ body{
 }
 
 .outer-circles{
-    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.05), 0 0 0 50px rgba(255, 255, 255, 0.05), 0 0 0 75px rgba(255, 255, 255, 0.05); 
+    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.05); 
 
 }
+/* .outer-circles{
+    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.05), 0 0 0 50px rgba(255, 255, 255, 0.05), 0 0 0 75px rgba(255, 255, 255, 0.05); 
+
+} */
 
 .dark-blue{
     border-radius:50%;
@@ -356,7 +360,7 @@ color: #3B4262;
         
     }
 
-    .win-status{
+    #win-status{
         font-weight: 700;
         margin-block: 0em;
 font-size: 56px;
@@ -639,7 +643,7 @@ color: #3B4262;
     
 }
 
-.win-status{
+#win-status{
     font-weight: 700;
     margin-block: 0em;
 font-size: 56px;
